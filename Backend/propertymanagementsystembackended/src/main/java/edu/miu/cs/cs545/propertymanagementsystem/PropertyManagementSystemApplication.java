@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class PropertymanagementsystemApplication {
+public class PropertyManagementSystemApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(PropertymanagementsystemApplication.class, args);
+        SpringApplication.run(PropertyManagementSystemApplication.class, args);
     }
 
 }
