@@ -15,7 +15,6 @@ public class ListMapper<T,E> {
     @Autowired
     ModelMapper modelMapper;
 
-
     public List<?> mapList(List<T> list, E convertTo){
         return
                 list.stream()
