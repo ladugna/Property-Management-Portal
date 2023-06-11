@@ -3,6 +3,9 @@ import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
 
+
+// just to check how to fetch from database
+
 const FetchData = () => {
   const [data, setdata]=useState([])
         useEffect(()=>{
