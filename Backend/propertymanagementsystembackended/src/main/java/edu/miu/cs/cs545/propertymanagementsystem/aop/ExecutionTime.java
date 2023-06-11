@@ -5,7 +5,5 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.METHOD)
 public @interface ExecutionTime {
-    //Transaction Id, Date, Time, Principle, Operation
-
 
 }

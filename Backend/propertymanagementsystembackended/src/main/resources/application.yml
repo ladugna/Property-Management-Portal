@@ -1,13 +1,13 @@
 spring:
   application:
-    name: Property-Management-PortalDB
+    name: Property-Management-PortalDb
   datasource:
     password: 1
-    url: jdbc:postgresql://localhost:5432/Property-Management-PortalDB
+    url: jdbc:postgresql://localhost:5432/Property-Management-PortalDb
     username: postgres
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
