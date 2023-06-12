@@ -20,17 +20,17 @@ public class ExceptionAspect {
         this.exceptionRepository = exceptionRepository;
     }
 
-    @AfterThrowing(pointcut = "execution(* edu.miu.cs.cs545.propertymanagementsystem.controller.AuthController.*(..))", throwing = "exception")
-    public void logAfterThrowing(JoinPoint joinPoint, Exception exception) {
-        String principle = "FakeUser"; // Set the fake user for now
-        String operation = joinPoint.getSignature().getName();
-        ExceptionTable exceptionLog = new ExceptionTable();
-        exceptionLog.setDate(LocalDate.now());
-        exceptionLog.setTime(LocalTime.now());
-        exceptionLog.setPrinciple(principle);
-        exceptionLog.setOperation(operation);
-        exceptionLog.setExceptionType(exception.getClass().getSimpleName());
-        exceptionRepository.save(exceptionLog);
-        // Additional handling or logging for the exception
-    }
+//    @AfterThrowing(pointcut = "execution(* edu.miu.cs.cs545.propertymanagementsystem.controller.AuthController.*(..))", throwing = "exception")
+//    public void logAfterThrowing(JoinPoint joinPoint, Exception exception) {
+//        String principle = "FakeUser"; // Set the fake user for now
+//        String operation = joinPoint.getSignature().getName();
+//        ExceptionTable exceptionLog = new ExceptionTable();
+//        exceptionLog.setDate(LocalDate.now());
+//        exceptionLog.setTime(LocalTime.now());
+//        exceptionLog.setPrinciple(principle);
+//        exceptionLog.setOperation(operation);
+//        exceptionLog.setExceptionType(exception.getClass().getSimpleName());
+//        exceptionRepository.save(exceptionLog);
+//        // Additional handling or logging for the exception
+//    }
 }

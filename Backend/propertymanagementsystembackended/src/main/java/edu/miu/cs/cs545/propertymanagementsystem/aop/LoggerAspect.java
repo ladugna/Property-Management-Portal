@@ -23,15 +23,15 @@ public class LoggerAspect {
         this.loggerRepository = loggerRepository;
     }
 
-    @Before("execution(* edu.miu.cs.cs545.propertymanagementsystem.controller.AuthController.*(..))")
-    public void logBefore(JoinPoint joinPoint) {
-        String principle = "FakeUser"; // Set the fake user for now
-        String operation = joinPoint.getSignature().getName();
-        Logger logger = new Logger();
-        logger.setDate(LocalDate.now());
-        logger.setTime(LocalTime.now());
-        logger.setPrinciple(principle);
-        logger.setOperation(operation);
-        loggerRepository.save(logger);
-    }
+//    @Before("execution(* edu.miu.cs.cs545.propertymanagementsystem.controller.AuthController.*(..))")
+//    public void logBefore(JoinPoint joinPoint) {
+//        String principle = "FakeUser"; // Set the fake user for now
+//        String operation = joinPoint.getSignature().getName();
+//        Logger logger = new Logger();
+//        logger.setDate(LocalDate.now());
+//        logger.setTime(LocalTime.now());
+//        logger.setPrinciple(principle);
+//        logger.setOperation(operation);
+//        loggerRepository.save(logger);
+//    }
 }

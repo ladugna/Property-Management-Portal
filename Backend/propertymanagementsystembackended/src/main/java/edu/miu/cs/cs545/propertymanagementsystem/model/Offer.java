@@ -22,7 +22,7 @@ public class Offer {
     private String title;
     private String description;
     private double price;
-    private boolean status; //accepted or rejected
+    private String status; //accepted or rejected
     private LocalDate expiration_date;
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "property_id")

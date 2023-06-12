@@ -11,7 +11,7 @@ public interface OfferService {
 
     public List<OfferResponse> findAll();
     public OfferResponse findOfferBYId(long id);
-    public void addNewOffer(Offer offer);
+    public void addNewOffer(OfferRequest offerRequest);
     public void deleteOfferById(long id);
     public OfferResponse updateOfferById(long id, OfferRequest offerRequest);
 }
