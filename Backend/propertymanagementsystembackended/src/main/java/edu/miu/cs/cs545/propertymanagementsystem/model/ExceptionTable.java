@@ -18,7 +18,7 @@ import java.time.LocalTime;
 public class ExceptionTable {
     //Storing exceptions on database
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long transactionId;
     private LocalDate date;
     private LocalTime time;

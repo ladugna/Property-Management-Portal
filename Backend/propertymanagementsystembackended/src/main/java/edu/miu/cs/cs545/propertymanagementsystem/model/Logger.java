@@ -19,7 +19,7 @@ public class Logger {
 
     //storing transaction on database
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long transactionId;
     private LocalDate date;
     private LocalTime time;

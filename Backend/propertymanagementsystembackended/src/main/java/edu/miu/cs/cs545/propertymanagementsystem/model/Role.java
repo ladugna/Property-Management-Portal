@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "Role")
 public class Role {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String role;  //Owner, Admin, Customer, and Viewer.
 
