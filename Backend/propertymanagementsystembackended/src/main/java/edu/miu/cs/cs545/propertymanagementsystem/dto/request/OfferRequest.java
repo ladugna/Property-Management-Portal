@@ -14,6 +14,6 @@ public class OfferRequest {
     private String title;
     private String description;
     private double price;
-    private boolean status; //accepted or rejected
+    private String status; //accepted or rejected
     private LocalDate expiration_date;
 }

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/v1/tests")
 public class TestController {
 
-    @ExecutionTime
+//    @ExecutionTime
     @GetMapping
     public String test(){
         return "It is working, testing successful";
