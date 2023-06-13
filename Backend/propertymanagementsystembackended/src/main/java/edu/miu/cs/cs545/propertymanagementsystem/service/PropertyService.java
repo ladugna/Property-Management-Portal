@@ -13,7 +13,18 @@ public interface PropertyService {
 
     public Page<PropertyResponse> findAll(Pageable pageable);
     public PropertyResponse findPropertyBYId(long id);
+
+    PropertyResponse findPropertyById(long id);
+
     public void addNewProperty(PropertyRequest propertyRequest);
     public void deletePropertyById(long id);
-    public PropertyResponse updatePropertyById(long id, PropertyRequest propertyRequest);
+    public void updatePropertyById(long id, PropertyRequest propertyRequest);
+
+    List<Property> ByCriteria(String location, int numberOfBedrooms, int numberOfBathrooms, double price, double status);
+
+    List<Property> findByCriteria(String location,
+                                  int numberOfBedrooms,
+                                  int numberOfBathrooms,
+                                  double price,
+                                  String status);
 }
