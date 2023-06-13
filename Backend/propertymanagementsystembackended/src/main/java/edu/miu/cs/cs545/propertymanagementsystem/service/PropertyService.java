@@ -20,8 +20,6 @@ public interface PropertyService {
     public void deletePropertyById(long id);
     public void updatePropertyById(long id, PropertyRequest propertyRequest);
 
-    List<Property> ByCriteria(String location, int numberOfBedrooms, int numberOfBathrooms, double price, double status);
-
     List<Property> findByCriteria(String location,
                                   int numberOfBedrooms,
                                   int numberOfBathrooms,

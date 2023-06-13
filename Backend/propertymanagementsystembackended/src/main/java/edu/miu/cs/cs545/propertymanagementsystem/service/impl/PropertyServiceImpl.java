@@ -57,21 +57,17 @@ public class PropertyServiceImpl implements PropertyService {
 
     @Override
     public void updatePropertyById(long id, PropertyRequest propertyRequest) {
-        //retrieve the property with this id
-        //Change it
-        //save
 
        var property = propertyRepository.findById(id).orElseThrow();
        property.setDescription(propertyRequest.getDescription());
-
-       //to do........
+       property.setImage(propertyRequest.getImage());
+       property.setDescription(propertyRequest.getDescription());
+       property.setPrice(propertyRequest.getPrice());
+       property.setNumber_of_bath_rooms(propertyRequest.getNumber_of_bath_rooms());
+       property.setNumber_of_bed_rooms(propertyRequest.getNumber_of_bed_rooms());
+       property.setTitle(propertyRequest.getTitle());
 
       propertyRepository.save(property);
-    }
-
-    @Override
-    public List<Property> ByCriteria(String location, int numberOfBedrooms, int numberOfBathrooms, double price, double status) {
-        return null;
     }
 
     @Override
