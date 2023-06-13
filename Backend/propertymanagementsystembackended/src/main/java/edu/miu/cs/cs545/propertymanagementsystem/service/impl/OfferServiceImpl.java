@@ -3,9 +3,12 @@ package edu.miu.cs.cs545.propertymanagementsystem.service.impl;
 import edu.miu.cs.cs545.propertymanagementsystem.dto.request.OfferRequest;
 import edu.miu.cs.cs545.propertymanagementsystem.dto.response.OfferResponse;
 import edu.miu.cs.cs545.propertymanagementsystem.model.Offer;
+import edu.miu.cs.cs545.propertymanagementsystem.model.User;
 import edu.miu.cs.cs545.propertymanagementsystem.repository.OfferRepository;
+import edu.miu.cs.cs545.propertymanagementsystem.repository.UserRepository;
 import edu.miu.cs.cs545.propertymanagementsystem.service.OfferService;
 import edu.miu.cs.cs545.propertymanagementsystem.util.ListMapper;
+import edu.miu.cs.cs545.propertymanagementsystem.util.Util;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,6 +25,8 @@ public class OfferServiceImpl implements OfferService {
     private ModelMapper modelMapper;
     @Autowired
    private ListMapper listMapper;
+    @Autowired
+    private UserRepository userRepository;
     @Override
     public List<OfferResponse> findAll() {
        // return listMapper.mapList(offerRepository.findAll(), OfferResponse.class);
@@ -35,7 +40,10 @@ public class OfferServiceImpl implements OfferService {
 
     @Override
     public void addNewOffer(OfferRequest offerRequest) {
+
+      //  User user= userRepository.findByEmail(Util.getLoggedInUserName());  //find logged in user
   offerRepository.save(modelMapper.map(offerRequest, Offer.class));
+  // user.add(offerRequest);  //if user is customer
     }
 
     @Override
