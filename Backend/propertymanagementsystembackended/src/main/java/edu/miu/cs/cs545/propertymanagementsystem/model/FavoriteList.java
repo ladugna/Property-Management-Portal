@@ -1,6 +1,5 @@
 package edu.miu.cs.cs545.propertymanagementsystem.model;
 
-import edu.miu.cs.cs545.propertymanagementsystem.model.enums.Roles;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,12 +13,17 @@ import java.util.List;
 @Data
 @Entity
 @Builder
-@Table(name = "Role")
-public class Role {
+@Table(name = "favorites")
+public class FavoriteList {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-    //private String role;  //Owner, Admin, Customer, and Viewer.
-    @Enumerated(EnumType.STRING)
-   private Roles roles;
+    private Long favorite_id;
+    private String name;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User customer;
+
+    @OneToMany(mappedBy = "favorites", cascade = CascadeType.ALL)
+    private List<Property> properties;
 }

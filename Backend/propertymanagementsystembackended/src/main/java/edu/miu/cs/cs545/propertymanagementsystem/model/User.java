@@ -17,14 +17,27 @@ import java.util.List;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long user_id;
     private String email;
     private String password;
     private String firstName;
     private String lastName;
+    @Column(nullable = false)
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable
-    private List<Role> roles;
+    @JoinTable(name = "user_role")
+    private List<Role> role;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Offer> offers;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Property> properties;
+
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    List<FavoriteList> favorites;
+    @OneToMany(mappedBy = "sender", cascade = CascadeType.ALL)
+    private List<Message> sentMessages;
+
+    @OneToMany(mappedBy = "recipient", cascade = CascadeType.ALL)
+    private List<Message> receivedMessages;
 
     public User(String email, String password, String firstName, String lastName) {
         this.email = email;
