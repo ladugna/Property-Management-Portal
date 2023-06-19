@@ -1,5 +1,6 @@
 import React from 'react'
 import Routing from '../Components/Routes/Routing'
+import Header from '../Container/Header/Header'
 
 
 
@@ -7,9 +8,9 @@ import Routing from '../Components/Routes/Routing'
 const DashBoard = () => {
   return (
     <React.Fragment>   
-    {/* <div className='header'>
+    <div className='header'>
         <Header/>
-    </div> */}
+    </div>
     <div className="Page">
   <Routing/>
     </div>

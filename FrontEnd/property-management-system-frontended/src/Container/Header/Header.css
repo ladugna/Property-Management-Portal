@@ -1,8 +1,55 @@
+/* Header.css */
 .header {
-    border: 1px solid black;
-    position: sticky;
-    top: 0;
-    background-color: #A5C0DD;
-    opacity: 1;
-    z-index: 99;
-}
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f2f2f2;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .header label {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .header .nav-links {
+    display: flex;
+    align-items: center;
+  }
+  
+  .header .nav-links a {
+    text-decoration: none;
+    margin-right: 10px;
+  }
+  
+  .header .nav-links a:last-child {
+    margin-right: 0;
+  }
+  
+  .header .nav-links a:hover {
+    color: #555555;
+  }
+  
+  .header .logout-btn {
+    margin-left: 10px;
+    background-color: #f44336;
+    color: white;
+  }
+  
+  .header .logout-btn:hover {
+    background-color: #d32f2f;
+  }
+  
+  .header .login-btn,
+  .header .register-btn {
+    margin-right: 10px;
+    color: #555555;
+  }
+  
+  .header .login-btn:hover,
+  .header .register-btn:hover {
+    color: #222222;
+  }
+  
+  
