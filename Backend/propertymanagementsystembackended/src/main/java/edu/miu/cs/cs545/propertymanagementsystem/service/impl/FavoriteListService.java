@@ -8,11 +8,9 @@ import edu.miu.cs.cs545.propertymanagementsystem.repository.FavoriteRepository;
 import edu.miu.cs.cs545.propertymanagementsystem.repository.PropertyRepository;
 import edu.miu.cs.cs545.propertymanagementsystem.repository.UserRepository;
 import org.springframework.stereotype.Service;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
-
 @Service
 
 public class FavoriteListService {
@@ -44,7 +42,6 @@ public class FavoriteListService {
             propertyRepository.save(property);
         }
     }
-
     public List<FavoriteList> getFavoriteList(Long customerId){
         return favoriteRepository.findByCustomerId(customerId);
     }

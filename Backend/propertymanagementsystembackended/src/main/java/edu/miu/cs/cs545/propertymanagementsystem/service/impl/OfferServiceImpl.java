@@ -9,6 +9,7 @@ import edu.miu.cs.cs545.propertymanagementsystem.model.enums.Roles;
 import edu.miu.cs.cs545.propertymanagementsystem.repository.OfferRepository;
 import edu.miu.cs.cs545.propertymanagementsystem.repository.PropertyRepository;
 import edu.miu.cs.cs545.propertymanagementsystem.repository.UserRepository;
+import edu.miu.cs.cs545.propertymanagementsystem.service.OfferService;
 import org.springframework.data.crossstore.ChangeSetPersister;
 
 import org.springframework.stereotype.Service;
@@ -20,7 +21,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class OfferServiceImpl {
+public class OfferServiceImpl implements OfferService {
     private final OfferRepository offerRepository;
     private final PropertyRepository propertyRepository;
     private final UserRepository userRepository;
@@ -131,6 +132,5 @@ public class OfferServiceImpl {
             }
         }
     }
-
 
 }
