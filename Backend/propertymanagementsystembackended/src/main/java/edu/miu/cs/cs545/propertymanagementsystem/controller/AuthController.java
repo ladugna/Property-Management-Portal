@@ -2,6 +2,7 @@ package edu.miu.cs.cs545.propertymanagementsystem.controller;
 
 import edu.miu.cs.cs545.propertymanagementsystem.dto.request.LoginRequest;
 import edu.miu.cs.cs545.propertymanagementsystem.dto.request.RefreshTokenRequest;
+import edu.miu.cs.cs545.propertymanagementsystem.dto.request.RegisterRequest;
 import edu.miu.cs.cs545.propertymanagementsystem.dto.response.LoginResponse;
 import edu.miu.cs.cs545.propertymanagementsystem.service.AuthService;
 import org.springframework.http.HttpStatus;
@@ -29,6 +30,11 @@ public class AuthController {
     @PostMapping("/refreshToken")
     public LoginResponse refreshToken(@RequestBody RefreshTokenRequest refreshTokenRequest) {
         return authService.refreshToken(refreshTokenRequest);
+    }
+    @PostMapping("/register")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void register(@RequestBody RegisterRequest registerRequest) {
+        authService.register(registerRequest);
     }
 
 }

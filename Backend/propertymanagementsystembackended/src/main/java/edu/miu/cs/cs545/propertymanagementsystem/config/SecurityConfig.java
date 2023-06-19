@@ -1,6 +1,7 @@
 package edu.miu.cs.cs545.propertymanagementsystem.config;
 
 import edu.miu.cs.cs545.propertymanagementsystem.filter.JwtFilter;
+import edu.miu.cs.cs545.propertymanagementsystem.model.enums.Roles;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,7 +25,7 @@ public class SecurityConfig {
     private final UserDetailsService userDetailsService;
     private final JwtFilter jwtFilter;
    //Owner, Admin, Customer, and Viewer.
-    String[] roles = {"CUSTOMER","ADMIN", "OWNER", "VIEWER"}; // You can make this a call from the DB
+   // String[] roles = {"CUSTOMER","ADMIN", "OWNER", "VIEWER"}; // You can make this a call from the DB
 
 
     @Bean
@@ -46,7 +47,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests()
                 .requestMatchers("/api/v1/authenticate/**").permitAll()
               // .requestMatchers("/api/v1/products").hasAuthority("CUSTOMER")
-                .requestMatchers("/api/v1/tests").hasAnyAuthority(roles) // Dynamic authorities
+               // .requestMatchers("/api/v1/tests").hasAnyAuthority(roles) // Dynamic authorities
+                .requestMatchers("/api/v1/tests").hasAnyAuthority(Roles.ADMIN.name()) // Dynamic authorities
                 .anyRequest()
                 .authenticated()
                 .and()

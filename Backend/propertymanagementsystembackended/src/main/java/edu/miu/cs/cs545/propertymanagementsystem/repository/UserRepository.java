@@ -23,4 +23,7 @@ public interface UserRepository extends CrudRepository<User, Integer> {
     List<User> findAllUserByRoleOwner();
     @Query("select u from User u where u.role='CUSTOMER'")
     List<User> findAllCustomers();
+    @Modifying
+    @Query("UPDATE User u SET u.isActive = :value WHERE u.id = :id")
+    void activateUser(long id, String value);
 }

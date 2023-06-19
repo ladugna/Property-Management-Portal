@@ -47,6 +47,10 @@ public class Property {
     @JoinColumn(name = "owner_id", referencedColumnName = "user_id")
     @JsonBackReference
     private User user;
+    @ManyToOne (cascade = CascadeType.ALL)
+    @JoinColumn(name = "favotite_list_id")
+    @JsonBackReference
+    private FavoriteList favorites;
 
 
 }

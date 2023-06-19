@@ -22,4 +22,6 @@ public class Role {
     //private String role;  //Owner, Admin, Customer, and Viewer.
     @Enumerated(EnumType.STRING)
    private Roles roles;
+    @ManyToMany(mappedBy = "role")
+    private List<User> user;
 }

@@ -12,8 +12,10 @@ public class RegisterRequest {
 
     private String password;
 
-    @NotBlank(message = "Name is Required")
-    private String name;
+    @NotBlank(message = "first name is Required")
+    private String firstName;
+    @NotBlank(message = "last name is Required")
+    private String lastName;
 
     @NotBlank(message = "isOwner property is Required")
 

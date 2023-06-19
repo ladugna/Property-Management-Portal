@@ -18,8 +18,8 @@ public interface OfferRepository extends JpaRepository<Offer, Long> {
     @Query("select o from Offer o where o.user.user_id=:cusId and o.offerStatus= 'PENDING'")
     List<Offer> findActiveOffersByCustomerId(Long cusId);
 
-    @Query("select o from Offer o where o.offerStatus=:propertyStatus")
-    List<Offer> findByOfferStatus(String offerStatus);
+    @Query("select o from Offer o where o.offerStatus=:offerStatus")
+    List<Offer> findByOfferStatus(OfferStatus offerStatus);
 
     @Query("select o from Offer o join o.property p where p.property_id=:propertyId")
     List<Offer> findOfferByPropertyId(Long propertyId);

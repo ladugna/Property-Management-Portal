@@ -2,18 +2,30 @@ package edu.miu.cs.cs545.propertymanagementsystem.service.impl;
 
 import edu.miu.cs.cs545.propertymanagementsystem.dto.request.LoginRequest;
 import edu.miu.cs.cs545.propertymanagementsystem.dto.request.RefreshTokenRequest;
+import edu.miu.cs.cs545.propertymanagementsystem.dto.request.RegisterRequest;
 import edu.miu.cs.cs545.propertymanagementsystem.dto.response.LoginResponse;
+import edu.miu.cs.cs545.propertymanagementsystem.model.Role;
+import edu.miu.cs.cs545.propertymanagementsystem.model.User;
+import edu.miu.cs.cs545.propertymanagementsystem.model.enums.Roles;
+import edu.miu.cs.cs545.propertymanagementsystem.repository.RoleRepository;
+import edu.miu.cs.cs545.propertymanagementsystem.repository.UserRepository;
 import edu.miu.cs.cs545.propertymanagementsystem.service.AuthService;
 import edu.miu.cs.cs545.propertymanagementsystem.util.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.Collections;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -24,6 +36,12 @@ public class AuthServiceImpl implements AuthService {
     private final AuthenticationManager authenticationManager;
     private final UserDetailsService userDetailsService;
     private final JwtUtil jwtUtil;
+    private final ModelMapper modelMapper;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    @Autowired
+    private  UserRepository userRepository;
+    @Autowired
+    private  RoleRepository roleRepository;
 
     @Override
     public LoginResponse login(LoginRequest loginRequest) {
@@ -61,5 +79,23 @@ public class AuthServiceImpl implements AuthService {
             return loginResponse;
         }
         return new LoginResponse();
+    }
+
+
+    @Override
+    public void register(RegisterRequest registerRequest) {
+        try {
+            User user = modelMapper.map(registerRequest, User.class);
+            user.setFirstName(Optional.ofNullable(registerRequest.getFirstName()).orElse("Default first name"));
+            user.setLastName(Optional.ofNullable(registerRequest.getLastName()).orElse("Default last name"));
+            Roles given = registerRequest.getIsOwner() ? Roles.OWNER : Roles.CUSTOMER;
+            Role role = roleRepository.findByRoles(given);
+            user.setRole(Collections.singletonList(role));
+            user.setPassword(bCryptPasswordEncoder.encode(registerRequest.getPassword()));
+
+            userRepository.save(user);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }

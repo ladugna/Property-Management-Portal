@@ -17,14 +17,16 @@ import java.util.List;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long user_id;
+    private Long user_id;
     private String email;
     private String password;
     private String firstName;
     private String lastName;
+    private String isActive = "inactive";
     @Column(nullable = false)
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "user_role")
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
     private List<Role> role;
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Offer> offers;

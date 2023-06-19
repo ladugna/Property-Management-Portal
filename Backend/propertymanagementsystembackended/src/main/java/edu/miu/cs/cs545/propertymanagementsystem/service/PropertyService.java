@@ -16,4 +16,16 @@ public interface PropertyService {
     public void addNewProperty(PropertyRequest propertyRequest);
     public void deletePropertyById(long id);
     public PropertyResponse updatePropertyById(long id, PropertyRequest propertyRequest);
+    List<Property> propertiesByAddress(String city);
+    public List<Property> propertiesByUserId(Long id);
+
+    void cancelContingency(Long id);
+  void approveContingency(long id);
+    Property updateToPending(Long id);
+
+    Property updateToAvailable(Long id);
+
+    Property updateToContingent(Long id);
+  Property updateToSold(Long id);
+
 }
