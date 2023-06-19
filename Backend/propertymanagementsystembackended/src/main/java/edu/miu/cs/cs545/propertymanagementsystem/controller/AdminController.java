@@ -70,7 +70,6 @@ public class AdminController {
         adminService.deleteUser( id);
     }
 
-    //Property
 
     @GetMapping("/property")
 public ResponseEntity<?> getAllProperty(){

@@ -1,13 +1,23 @@
-import logo from './logo.svg';
+
+import { BrowserRouter } from 'react-router-dom';
 import './App.css';
-import FetchData from './Components/FetchData';
+import DashBoard from './DashBoard/DashBoard';
+import { userGlobalContext } from './Context/GlobalContext';
+import { useState } from 'react';
 
 function App() {
+
+  const [user, setUser] = useState({
+    isAuthenticated: false,
+    id: null,
+  });
   return (
-    <div className="App">
-      <h1>Welcome to Property Managemnt System</h1>
-      <FetchData/>
-    </div>
+    <BrowserRouter>
+        <userGlobalContext.Provider value={{user, setUser}}>
+        <h1> Welcome WAA </h1>
+        <DashBoard />
+        </userGlobalContext.Provider>
+      </BrowserRouter>
   );
 }
 //
