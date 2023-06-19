@@ -1,8 +1,8 @@
 
 import { Route, Routes } from "react-router-dom";
-import PublicPage from "../../Container/Publicpage/PublicPage";
-import LoginPage from "../../Container/HomePage/Loginpage";
-import RegisterPage from "../../Container/HomePage/Registerpage";
+import PublicPage from "../Publicpage/PublicPage";
+import LoginPage from "../HomePage/Loginpage";
+import RegisterPage from "../HomePage/Registerpage";
 
 const Routing = () => {
   return (
