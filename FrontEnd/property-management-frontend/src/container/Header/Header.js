@@ -18,7 +18,6 @@ const Header = () => {
   };
   return (
     <div className="header">
-      <label>Header</label>
       <Link to={"/"}>
         <Button variant="text">Home</Button>
       </Link>
